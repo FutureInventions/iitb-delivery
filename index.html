@@ -3,81 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IITB Airmail | Late Night Delivery</title>
+    <title>IITB Airmail | Official Delivery</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap');
         body { background-color: #020617; color: #f8fafc; font-family: 'Space Grotesk', sans-serif; }
         .glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); }
         .accent-text { color: #38bdf8; }
+        .success-state { display: none; }
     </style>
 </head>
 <body class="min-h-screen flex items-center justify-center p-4">
 
-    <div class="max-w-md w-full glass rounded-3xl p-8 shadow-2xl">
-        <header class="text-center mb-10">
-            <div class="inline-block bg-sky-500/20 p-3 rounded-2xl mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                </svg>
-            </div>
-            <h1 class="text-3xl font-bold tracking-tight">IITB <span class="accent-text">Airmail</span></h1>
-            <p class="text-slate-400 text-sm mt-2 font-light italic">"Main Gate to Room in Minutes"</p>
+    <div id="formContainer" class="max-w-md w-full glass rounded-3xl p-8 shadow-2xl">
+        <header class="text-center mb-8">
+            <h1 class="text-3xl font-bold tracking-tight uppercase italic">IITB <span class="accent-text">Airmail</span></h1>
+            <p class="text-slate-400 text-xs mt-2 uppercase tracking-widest">Main Gate Logistical Support</p>
         </header>
 
-        <form id="airmailForm" class="space-y-5">
+        <form id="airmailForm" class="space-y-4">
             <input type="text" id="name" placeholder="Full Name" required class="w-full p-4 rounded-xl bg-slate-900/50 border border-slate-700 focus:border-sky-500 outline-none transition-all">
             
-            <input type="text" id="address" placeholder="Hostel & Room (e.g. H-12, 402)" required class="w-full p-4 rounded-xl bg-slate-900/50 border border-slate-700 focus:border-sky-500 outline-none">
+            <input type="text" id="address" placeholder="Hostel & Room (e.g. H-3, 102)" required class="w-full p-4 rounded-xl bg-slate-900/50 border border-slate-700 focus:border-sky-500 outline-none">
             
-            <input type="tel" id="phone" placeholder="WhatsApp Number" required class="w-full p-4 rounded-xl bg-slate-900/50 border border-slate-700 focus:border-sky-500 outline-none">
+            <input type="tel" id="phone" placeholder="Contact Number" required class="w-full p-4 rounded-xl bg-slate-900/50 border border-slate-700 focus:border-sky-500 outline-none">
             
-            <input type="text" id="orderId" placeholder="Zomato/Swiggy/Blinkit ID" required class="w-full p-4 rounded-xl bg-slate-900/50 border border-slate-700 focus:border-sky-500 outline-none">
+            <input type="text" id="orderId" placeholder="Food App Order ID" required class="w-full p-4 rounded-xl bg-slate-900/50 border border-slate-700 focus:border-sky-500 outline-none">
+
+            <div class="pt-2">
+                <label class="text-[10px] text-sky-400 font-bold uppercase mb-2 block tracking-widest">Set Delivery Verification OTP</label>
+                <input type="number" id="otp" placeholder="Choose 4-digit PIN" required pattern="[0-9]{4}" class="w-full p-4 rounded-xl bg-sky-500/10 border border-sky-500/30 focus:border-sky-500 outline-none text-center text-xl tracking-[1em] font-bold">
+            </div>
 
             <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-800 flex justify-between items-center">
-                <span class="text-sm text-slate-300">Delivery Fee</span>
-                <span class="font-bold text-xl text-sky-400">₹25 <small class="text-[10px] text-slate-500 font-normal">(Pay on Delivery)</small></span>
+                <span class="text-sm text-slate-300 font-bold uppercase">Cash on Delivery</span>
+                <span class="font-bold text-xl text-sky-400">₹25</span>
             </div>
 
             <button type="submit" id="submitBtn" class="w-full bg-sky-500 hover:bg-sky-400 text-white font-bold py-4 rounded-xl shadow-lg shadow-sky-500/20 transition-all active:scale-95">
-                CONFIRM ORDER
+                CONFIRM AIRMAIL
             </button>
         </form>
+    </div>
 
-        <footer class="mt-8 text-center text-[10px] text-slate-500 uppercase tracking-widest">
-            Active 11:00 PM — 03:00 AM
-        </footer>
+    <div id="successMessage" class="max-w-md w-full glass rounded-3xl p-10 shadow-2xl text-center success-state">
+        <div class="text-6xl mb-4">🚀</div>
+        <h2 class="text-2xl font-bold mb-2">Order Confirmed!</h2>
+        <p class="text-slate-400 mb-6">Your Airmail runner is tracking your delivery at the main gate. Please keep ₹25 cash ready.</p>
+        <div class="bg-slate-900 p-4 rounded-xl border border-slate-700 text-sm italic">
+            "Show your OTP to the runner to receive your food."
+        </div>
+        <button onclick="location.reload()" class="mt-8 text-sky-400 text-sm underline">Place Another Order</button>
     </div>
 
     <script>
-        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwn_BtZzTniomiqueVJ-DF-zaCfQpA3-wtK2CkaOyihKoI1jqjA86O73huQtKwlOQcO/exec"; // <--- PUT YOUR URL HERE
+        // PASTE YOUR NEW GOOGLE SCRIPT URL HERE
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwn_BtZzTniomiqueVJ-DF-zaCfQpA3-wtK2CkaOyihKoI1jqjA86O73huQtKwlOQcO/exec"; 
 
         document.getElementById('airmailForm').onsubmit = function(e) {
             e.preventDefault();
             const btn = document.getElementById('submitBtn');
+            const formContainer = document.getElementById('formContainer');
+            const successMessage = document.getElementById('successMessage');
+
             btn.disabled = true;
-            btn.innerText = "AIRMAILING...";
+            btn.innerText = "PROCESSING...";
 
             const data = {
                 name: document.getElementById('name').value,
                 address: document.getElementById('address').value,
                 phone: document.getElementById('phone').value,
-                orderId: document.getElementById('orderId').value
+                orderId: document.getElementById('orderId').value,
+                otp: document.getElementById('otp').value
             };
 
-            // 1. Send to Google Sheets
             fetch(SCRIPT_URL, {
                 method: 'POST',
                 mode: 'no-cors',
                 body: JSON.stringify(data)
             }).then(() => {
-                // 2. Redirect to WhatsApp for final confirmation
-                const msg = `*🚀 IITB AIRMAIL ORDER*%0A%0A*Name:* ${data.name}%0A*Hostel:* ${data.address}%0A*Phone:* ${data.phone}%0A*Order:* ${data.orderId}%0A*Payment:* Cash (₹25)`;
-                window.location.href = `https://wa.me/919876543210?text=${msg}`; // <--- UPDATE TO YOUR WHATSAPP
+                formContainer.style.display = 'none';
+                successMessage.style.display = 'block';
             }).catch(err => {
-                alert("Error sending order. Please try again.");
+                alert("Network error. Please check your connection.");
                 btn.disabled = false;
-                btn.innerText = "CONFIRM ORDER";
+                btn.innerText = "CONFIRM AIRMAIL";
             });
         }
     </script>
