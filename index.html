@@ -3,82 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IIT Night Delivery | 11PM - 3AM</title>
+    <title>IITB Airmail | Late Night Delivery</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background-color: #0f172a; color: white; }
-        .card { background: #1e293b; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap');
+        body { background-color: #020617; color: #f8fafc; font-family: 'Space Grotesk', sans-serif; }
+        .glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); }
+        .accent-text { color: #38bdf8; }
     </style>
 </head>
-<body class="p-5">
+<body class="min-h-screen flex items-center justify-center p-4">
 
-    <div class="max-w-md mx-auto card p-6">
-        <header class="text-center mb-8">
-            <h1 class="text-2xl font-bold text-yellow-400">IIT Last-Mile Delivery</h1>
-            <p class="text-gray-400 text-sm">Gate to Hostel • ₹25 Only</p>
+    <div class="max-w-md w-full glass rounded-3xl p-8 shadow-2xl">
+        <header class="text-center mb-10">
+            <div class="inline-block bg-sky-500/20 p-3 rounded-2xl mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                </svg>
+            </div>
+            <h1 class="text-3xl font-bold tracking-tight">IITB <span class="accent-text">Airmail</span></h1>
+            <p class="text-slate-400 text-sm mt-2 font-light italic">"Main Gate to Room in Minutes"</p>
         </header>
 
-        <form id="orderForm" class="space-y-4">
-            <div>
-                <label class="block text-xs font-semibold uppercase mb-1">Full Name</label>
-                <input type="text" id="name" required class="w-full p-3 rounded bg-slate-700 border-none focus:ring-2 focus:ring-yellow-400 outline-none">
+        <form id="airmailForm" class="space-y-5">
+            <input type="text" id="name" placeholder="Full Name" required class="w-full p-4 rounded-xl bg-slate-900/50 border border-slate-700 focus:border-sky-500 outline-none transition-all">
+            
+            <input type="text" id="address" placeholder="Hostel & Room (e.g. H-12, 402)" required class="w-full p-4 rounded-xl bg-slate-900/50 border border-slate-700 focus:border-sky-500 outline-none">
+            
+            <input type="tel" id="phone" placeholder="WhatsApp Number" required class="w-full p-4 rounded-xl bg-slate-900/50 border border-slate-700 focus:border-sky-500 outline-none">
+            
+            <input type="text" id="orderId" placeholder="Zomato/Swiggy/Blinkit ID" required class="w-full p-4 rounded-xl bg-slate-900/50 border border-slate-700 focus:border-sky-500 outline-none">
+
+            <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-800 flex justify-between items-center">
+                <span class="text-sm text-slate-300">Delivery Fee</span>
+                <span class="font-bold text-xl text-sky-400">₹25 <small class="text-[10px] text-slate-500 font-normal">(Pay on Delivery)</small></span>
             </div>
 
-            <div>
-                <label class="block text-xs font-semibold uppercase mb-1">Hostel & Room No.</label>
-                <input type="text" id="address" placeholder="e.g. H-10, Room 302" required class="w-full p-3 rounded bg-slate-700 border-none outline-none">
-            </div>
-
-            <div>
-                <label class="block text-xs font-semibold uppercase mb-1">Phone Number</label>
-                <input type="tel" id="phone" placeholder="WhatsApp Number" required class="w-full p-3 rounded bg-slate-700 border-none outline-none">
-            </div>
-
-            <div>
-                <label class="block text-xs font-semibold uppercase mb-1">Delivery App & Order ID</label>
-                <input type="text" id="orderId" placeholder="Zomato/Swiggy ID" required class="w-full p-3 rounded bg-slate-700 border-none outline-none">
-            </div>
-
-            <hr class="border-slate-600 my-4">
-
-            <div class="text-center bg-slate-800 p-4 rounded-lg border-2 border-dashed border-slate-500">
-                <p class="text-sm mb-2 font-bold">Pay ₹25 via UPI</p>
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=upi://pay?pa=YOURUPIID@okaxis&pn=IITDelivery&am=25" alt="UPI QR" class="mx-auto mb-2 rounded shadow-lg">
-                <p class="text-[10px] text-gray-400">Scan to pay ₹25 instantly</p>
-            </div>
-
-            <div class="flex items-center space-x-2">
-                <input type="checkbox" id="paid" required class="w-4 h-4 accent-yellow-400">
-                <label for="paid" class="text-sm">I have paid ₹25 and have the screenshot</label>
-            </div>
-
-            <button type="submit" class="w-full bg-yellow-500 hover:bg-yellow-600 text-slate-900 font-bold py-3 rounded-lg transition duration-200">
-                PLACE ORDER VIA WHATSAPP
+            <button type="submit" id="submitBtn" class="w-full bg-sky-500 hover:bg-sky-400 text-white font-bold py-4 rounded-xl shadow-lg shadow-sky-500/20 transition-all active:scale-95">
+                CONFIRM ORDER
             </button>
         </form>
+
+        <footer class="mt-8 text-center text-[10px] text-slate-500 uppercase tracking-widest">
+            Active 11:00 PM — 03:00 AM
+        </footer>
     </div>
 
     <script>
-        document.getElementById('orderForm').onsubmit = function(e) {
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwn_BtZzTniomiqueVJ-DF-zaCfQpA3-wtK2CkaOyihKoI1jqjA86O73huQtKwlOQcO/exec"; // <--- PUT YOUR URL HERE
+
+        document.getElementById('airmailForm').onsubmit = function(e) {
             e.preventDefault();
-            
-            // Your WhatsApp Number (Include Country Code, no '+' or spaces)
-            const myNumber = "919876543210"; 
-            
-            const name = document.getElementById('name').value;
-            const address = document.getElementById('address').value;
-            const phone = document.getElementById('phone').value;
-            const orderId = document.getElementById('orderId').value;
+            const btn = document.getElementById('submitBtn');
+            btn.disabled = true;
+            btn.innerText = "AIRMAILING...";
 
-            const message = `*NEW ORDER ALERT*%0A%0A` +
-                            `*Name:* ${name}%0A` +
-                            `*Hostel:* ${address}%0A` +
-                            `*Phone:* ${phone}%0A` +
-                            `*Order Details:* ${orderId}%0A` +
-                            `*Payment:* Confirmed ₹25 Paid`;
+            const data = {
+                name: document.getElementById('name').value,
+                address: document.getElementById('address').value,
+                phone: document.getElementById('phone').value,
+                orderId: document.getElementById('orderId').value
+            };
 
-            // Redirect to WhatsApp
-            window.location.href = `https://wa.me/${myNumber}?text=${message}`;
+            // 1. Send to Google Sheets
+            fetch(SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                body: JSON.stringify(data)
+            }).then(() => {
+                // 2. Redirect to WhatsApp for final confirmation
+                const msg = `*🚀 IITB AIRMAIL ORDER*%0A%0A*Name:* ${data.name}%0A*Hostel:* ${data.address}%0A*Phone:* ${data.phone}%0A*Order:* ${data.orderId}%0A*Payment:* Cash (₹25)`;
+                window.location.href = `https://wa.me/919876543210?text=${msg}`; // <--- UPDATE TO YOUR WHATSAPP
+            }).catch(err => {
+                alert("Error sending order. Please try again.");
+                btn.disabled = false;
+                btn.innerText = "CONFIRM ORDER";
+            });
         }
     </script>
 </body>
