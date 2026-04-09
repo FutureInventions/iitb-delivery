@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IIT Night Delivery | 11PM - 3AM</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #0f172a; color: white; }
+        .card { background: #1e293b; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+    </style>
+</head>
+<body class="p-5">
+
+    <div class="max-w-md mx-auto card p-6">
+        <header class="text-center mb-8">
+            <h1 class="text-2xl font-bold text-yellow-400">IIT Last-Mile Delivery</h1>
+            <p class="text-gray-400 text-sm">Gate to Hostel • ₹25 Only</p>
+        </header>
+
+        <form id="orderForm" class="space-y-4">
+            <div>
+                <label class="block text-xs font-semibold uppercase mb-1">Full Name</label>
+                <input type="text" id="name" required class="w-full p-3 rounded bg-slate-700 border-none focus:ring-2 focus:ring-yellow-400 outline-none">
+            </div>
+
+            <div>
+                <label class="block text-xs font-semibold uppercase mb-1">Hostel & Room No.</label>
+                <input type="text" id="address" placeholder="e.g. H-10, Room 302" required class="w-full p-3 rounded bg-slate-700 border-none outline-none">
+            </div>
+
+            <div>
+                <label class="block text-xs font-semibold uppercase mb-1">Phone Number</label>
+                <input type="tel" id="phone" placeholder="WhatsApp Number" required class="w-full p-3 rounded bg-slate-700 border-none outline-none">
+            </div>
+
+            <div>
+                <label class="block text-xs font-semibold uppercase mb-1">Delivery App & Order ID</label>
+                <input type="text" id="orderId" placeholder="Zomato/Swiggy ID" required class="w-full p-3 rounded bg-slate-700 border-none outline-none">
+            </div>
+
+            <hr class="border-slate-600 my-4">
+
+            <div class="text-center bg-slate-800 p-4 rounded-lg border-2 border-dashed border-slate-500">
+                <p class="text-sm mb-2 font-bold">Pay ₹25 via UPI</p>
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=upi://pay?pa=YOURUPIID@okaxis&pn=IITDelivery&am=25" alt="UPI QR" class="mx-auto mb-2 rounded shadow-lg">
+                <p class="text-[10px] text-gray-400">Scan to pay ₹25 instantly</p>
+            </div>
+
+            <div class="flex items-center space-x-2">
+                <input type="checkbox" id="paid" required class="w-4 h-4 accent-yellow-400">
+                <label for="paid" class="text-sm">I have paid ₹25 and have the screenshot</label>
+            </div>
+
+            <button type="submit" class="w-full bg-yellow-500 hover:bg-yellow-600 text-slate-900 font-bold py-3 rounded-lg transition duration-200">
+                PLACE ORDER VIA WHATSAPP
+            </button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('orderForm').onsubmit = function(e) {
+            e.preventDefault();
+            
+            // Your WhatsApp Number (Include Country Code, no '+' or spaces)
+            const myNumber = "919876543210"; 
+            
+            const name = document.getElementById('name').value;
+            const address = document.getElementById('address').value;
+            const phone = document.getElementById('phone').value;
+            const orderId = document.getElementById('orderId').value;
+
+            const message = `*NEW ORDER ALERT*%0A%0A` +
+                            `*Name:* ${name}%0A` +
+                            `*Hostel:* ${address}%0A` +
+                            `*Phone:* ${phone}%0A` +
+                            `*Order Details:* ${orderId}%0A` +
+                            `*Payment:* Confirmed ₹25 Paid`;
+
+            // Redirect to WhatsApp
+            window.location.href = `https://wa.me/${myNumber}?text=${message}`;
+        }
+    </script>
+</body>
+</html>
